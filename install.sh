@@ -7,11 +7,11 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 rm get-docker.sh
 sudo usermod -aG docker pi
-sudo usermod -aG docker pi
 sudo newgrp docker
 sudo pip3 install docker-compose
 docker network create traefik_proxy
 
+curl -O -s -H 'Cache-Control: no-cache' "https://raw.githubusercontent.com/andrewmarklloyd/pi-plex/master/.env.tmpl"
 echo 'Enter the FQDN for the application.'
 read FQDN
 echo 'Enter the OpenVPN provider.'
@@ -25,5 +25,5 @@ sed "s/{{.FQDN}}/${FQDN}/" .env.tmpl \
 	| sed "s/{{.VPN.Provider}}/${vpnProvider}/" \
 	| sed "s/{{.VPN.Username}}/${vpnUsername}/" \
 	| sed "s/{{.VPN.Password}}/${vpnPassword}/" > .env
-
+rm .env.tmpl
 docker-compose up -d
