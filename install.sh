@@ -43,6 +43,19 @@ install_application() {
 	docker-compose up -d
 }
 
+configure_applications() {
+	echo "TODO"
+	# setup jackett indexer
+	# configure transmission-vpn
+	# configure sonarr to use jackett
+	# configure sonarr to use transmission download client
+	# configure sonarr to use remote path mappings (if applicable)
+	# configure radarr to use jackett
+	# configure radarr to use transmission download client
+	# configure radarr to use remote path mappings (if applicable)
+	# configure plex to use media directory
+}
+
 
 if [[ ! -f get-docker.sh ]]; then
 	update
@@ -53,4 +66,5 @@ else
 	create_env_file
 	install_application
 	rm install.sh
+	configure_applications
 fi
