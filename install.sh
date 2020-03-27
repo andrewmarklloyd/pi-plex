@@ -52,4 +52,5 @@ else
 	install_docker_compose
 	create_env_file
 	install_application
+	rm install.sh
 fi
