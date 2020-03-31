@@ -43,9 +43,9 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ${DOCKER_DIR}/transmission-vpn:/data
       - ${DOCKER_DIR}/shared:/shared
-      - /mnt/hdd/Downloads/Torrents/watch:/data/watch
-      - /mnt/hdd/Downloads/Torrents/complete:/data/completed
-      - /mnt/hdd/Downloads/Torrents/incomplete:/data/incomplete
+      - ${EXTHDD_DIR}/Downloads/Torrents/watch:/data/watch
+      - ${EXTHDD_DIR}/Downloads/Torrents/complete:/data/completed
+      - ${EXTHDD_DIR}/Downloads/Torrents/incomplete:/data/incomplete
       - ${DOCKER_DIR}/transmission-vpn/openvpn:/etc/openvpn/torguard-custom
     environment:
       - OPENVPN_PROVIDER=${OPENVPN_PROVIDER}
@@ -81,8 +81,8 @@ services:
       - TZ=${TZ}
     volumes:
       - ${DOCKER_DIR}/sonarr:/config
-      - /mnt/hdd/Media/TV:/tv
-      - /mnt/hdd/Downloads:/downloads
+      - ${EXTHDD_DIR}/Media/TV:/tv
+      - ${EXTHDD_DIR}/Downloads:/downloads
       - "/etc/localtime:/etc/localtime:ro"
     # ports:
     #   - 8989:8989
@@ -105,8 +105,8 @@ services:
       - TZ=${TZ}
     volumes:
       - ${DOCKER_DIR}/radarr:/config
-      - /mnt/hdd/Downloads:/downloads
-      - /mnt/hdd/Media/Movies:/movies
+      - ${EXTHDD_DIR}/Downloads:/downloads
+      - ${EXTHDD_DIR}/Media/Movies:/movies
       - "/etc/localtime:/etc/localtime:ro"
     ports:
       - 7878:7878
@@ -129,7 +129,7 @@ services:
       - TZ=${TZ}
     volumes:
       - ${DOCKER_DIR}/jackett:/config
-      - /mnt/hdd/Jackett:/downloads
+      - ${EXTHDD_DIR}/Jackett:/downloads
       - "/etc/localtime:/etc/localtime:ro"
     # ports:
     #   - 9117:9117
@@ -158,11 +158,11 @@ services:
       - PGID=${PGID}
       - VERSION=docker
     volumes:
-      - /mnt/hdd/Plex/Config:/config
-      - /mnt/hdd/Media/TV:/data/tvshows
-      - /mnt/hdd/Media/Movies:/data/movies
-      - /mnt/hdd/Media/Other:/data/other
-      - /mnt/hdd/Plex/Transcode:/transcode
+      - ${EXTHDD_DIR}/Plex/Config:/config
+      - ${EXTHDD_DIR}/Media/TV:/data/tvshows
+      - ${EXTHDD_DIR}/Media/Movies:/data/movies
+      - ${EXTHDD_DIR}/Media/Other:/data/other
+      - ${EXTHDD_DIR}/Plex/Transcode:/transcode
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
