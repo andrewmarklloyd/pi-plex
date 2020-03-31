@@ -43,6 +43,27 @@ install_application() {
 	docker-compose up -d
 }
 
+configure_drive() {
+	echo "Must be formatted as ext4. Press enter to continue"
+	read
+	echo "Identify the name of the disk partition:"
+	sudo lsblk -o UUID,NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,MODEL
+	echo "Getting the location of the disk partition"
+	sudo blkid
+	echo "Creating target directory"
+	sudo mkdir /mnt/mydisk
+	echo "Mounting the storage device"
+	sudo mount /dev/sda2 /mnt/hdd
+	echo "Verify the mount was successful"
+	df -h /dev/sda2
+
+	echo "Taken from raspberrypi.org. For more see https://www.raspberrypi.org/documentation/configuration/external-storage.md"
+}
+
+unmount_device() {
+	sudo umount /mnt/hdd
+}
+
 configure_applications() {
 	echo "TODO"
 	# setup jackett indexer
