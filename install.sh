@@ -51,11 +51,11 @@ configure_drive() {
 	echo "Getting the location of the disk partition"
 	sudo blkid
 	echo "Creating target directory"
-	sudo mkdir /mnt/mydisk
+	sudo mkdir /mnt/hdd
 	echo "Mounting the storage device"
 	sudo mount /dev/sda2 /mnt/hdd
 	echo "Verify the mount was successful"
-	df -h /dev/sda2
+	df -h /mnt/hdd
 
 	echo "Taken from raspberrypi.org. For more see https://www.raspberrypi.org/documentation/configuration/external-storage.md"
 }
@@ -67,10 +67,12 @@ unmount_device() {
 configure_applications() {
 	echo "TODO"
 	# setup jackett indexer
+	echo "use torrentz as indexer"
 	# configure transmission-vpn
 	# configure sonarr to use jackett
-	# configure sonarr to use transmission download client
-	# configure sonarr to use remote path mappings (if applicable)
+	echo "add jacket:9117 url as indexer"
+	echo "add transmission-vpn as the download client"
+	echo "add remote path mapping: transmission-vpn /data/completed/ /downloads/Torrents/complete/"
 	# configure radarr to use jackett
 	# configure radarr to use transmission download client
 	# configure radarr to use remote path mappings (if applicable)
