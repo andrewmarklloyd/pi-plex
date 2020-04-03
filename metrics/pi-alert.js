@@ -7,15 +7,16 @@ const Twilio = require('twilio');
 const ALERT_USAGE = 80;
 
 function sendText(secrets, message) {
-  const client = new Twilio(secrets.ACCOUNT_SID, secrets.AUTH_TOKEN);
-  client.messages.create({
-    body: message,
-    to: secrets.TO,
-    from: secrets.FROM
-  })
-  .catch(e => {
-    console.log(e);
-  })
+  console.log(message)
+  // const client = new Twilio(secrets.ACCOUNT_SID, secrets.AUTH_TOKEN);
+  // client.messages.create({
+  //   body: message,
+  //   to: secrets.TO,
+  //   from: secrets.FROM
+  // })
+  // .catch(e => {
+  //   console.log(e);
+  // })
 }
 
 app.post('/api/metrics', (req, res) => {
