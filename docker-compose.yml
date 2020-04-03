@@ -62,6 +62,8 @@ services:
       - TRANSMISSION_RATIO_LIMIT=0.4999
       - TRANSMISSION_RATIO_LIMIT_ENABLED=true
       - TRANSMISSION_WEB_UI=combustion
+      - TRANSMISSION_DOWNLOAD_LIMIT=1
+      - TRANSMISSION_DOWNLOAD_LIMIT=5
     networks:
       - traefik_proxy
 
