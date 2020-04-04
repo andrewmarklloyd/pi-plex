@@ -33,7 +33,7 @@ app.post('/api/metrics', (req, res) => {
         }
       });
       if (volumes !== "") {
-        sendText(secrets, `Pi volume(s) are above ${ALERT_USAGE}% disk usage: ${volumes}`)
+        sendText(secrets, `Pi volume(s) are above ${ALERT_USAGE}% disk usage: ${volumes}. To acknowledge alert, set the ack to true in the Pi Metrics sheet.`)
       }
       res.set('Content-Type', 'application/json');
       res.status(200).json({result: 'success'});
