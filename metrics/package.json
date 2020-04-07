@@ -1,13 +1,9 @@
 {
   "scripts": {
-    "start": "wt serve --secrets-file .env pi-alert",
-    "deploy": "wt create --secrets-file .env pi-alert"
+    "deploy": "clasp deploy"
   },
   "dependencies": {
-    "express": "^4.16.2",
-    "twilio": "^3.29.2",
-    "webtask-tools": "^3.2.0",
-    "wt-cli": "^9.1.0"
+    "@google/clasp": "^2.3.0"
   },
   "devDependencies": {
     "concurrently": "^3.5.1",
