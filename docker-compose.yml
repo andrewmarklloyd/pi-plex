@@ -11,11 +11,11 @@ services:
     networks:
       - default
       - traefik_proxy
-    command: --api --docker
+    command: --docker
     ports:
       - "80:80"
       - "443:443"
-      - "8888:8080"
+      # - "8888:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ${DOCKER_DIR}/traefik:/etc/traefik
