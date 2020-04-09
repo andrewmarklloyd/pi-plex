@@ -40,6 +40,15 @@ create_env_file() {
 
 install_application() {
 	curl -O -s -H 'Cache-Control: no-cache' "https://raw.githubusercontent.com/andrewmarklloyd/pi-plex/master/docker-compose.yml"
+	curl -O -s -H 'Cache-Control: no-cache' "https://raw.githubusercontent.com/andrewmarklloyd/pi-plex/master/traefik/traefik.toml"
+	curl -O -s -H 'Cache-Control: no-cache' "https://raw.githubusercontent.com/andrewmarklloyd/pi-plex/master/traefik/rules.toml"
+	mv traefik.toml /mnt/hdd/docker/traefik/
+	mv rules.toml /mnt/hdd/docker/traefik/
+	touch /mnt/hdd/docker/traefik/acme/acme.json
+	chmod 600 /mnt/hdd/docker/traefik/acme/acme.json
+}
+
+start_application() {
 	docker-compose up -d
 }
 
@@ -88,6 +97,7 @@ else
 	install_docker_compose
 	create_env_file
 	install_application
+	start_application
 	rm install.sh
 	configure_applications
 fi
