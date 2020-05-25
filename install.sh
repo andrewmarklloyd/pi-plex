@@ -60,7 +60,7 @@ configure_drive() {
 	echo "Getting the location of the disk partition"
 	sudo blkid
 	echo "Creating target directory"
-	sudo mkdir /mnt/hdd
+	sudo mkdir -p /mnt/hdd
 	echo "Mounting the storage device"
 	sudo mount /dev/sda2 /mnt/hdd
 	echo "Verify the mount was successful"
@@ -79,7 +79,7 @@ configure_applications() {
 	echo "use torrentz as indexer"
 	# configure transmission-vpn
 	# configure sonarr to use jackett
-	echo "add jacket:9117 url as indexer"
+	echo "add jackett:9117 url as indexer"
 	echo "add transmission-vpn as the download client"
 	echo "add remote path mapping: transmission-vpn /data/completed/ /downloads/Torrents/complete/"
 	# configure radarr to use jackett

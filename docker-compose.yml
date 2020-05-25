@@ -177,7 +177,7 @@ services:
       - PGID=${PGID}
       - VERSION=docker
     volumes:
-      - ${EXTHDD_DIR}/Plex/Config:/config
+      - ${DOCKER_DIR}/Plex/Config:/config
       - ${EXTHDD_DIR}/Media/TV:/data/tvshows
       - ${EXTHDD_DIR}/Media/Movies:/data/movies
       - ${EXTHDD_DIR}/Media/Other:/data/other
