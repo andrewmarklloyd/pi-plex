@@ -24,6 +24,8 @@ create_env_file() {
 	curl -O -s -H 'Cache-Control: no-cache' "https://raw.githubusercontent.com/andrewmarklloyd/pi-plex/master/.env.tmpl"
 	echo 'Enter the FQDN for the application.'
 	read FQDN
+	echo 'Enter the DUCKDNS_TOKEN for the application.'
+	read DUCKDNS_TOKEN
 	echo 'Enter the OpenVPN provider.'
 	read vpnProvider
 	echo 'Enter the OpenVPN username.'
@@ -32,6 +34,7 @@ create_env_file() {
 	read -s vpnPassword
 
 	sed "s/{{.FQDN}}/${FQDN}/" .env.tmpl \
+		| sed "s/{{.DUCKDNS_TOKEN}}/${DUCKDNS_TOKEN}/" \
 		| sed "s/{{.VPN.Provider}}/${vpnProvider}/" \
 		| sed "s/{{.VPN.Username}}/${vpnUsername}/" \
 		| sed "s/{{.VPN.Password}}/${vpnPassword}/" > .env
@@ -42,6 +45,7 @@ install_application() {
 	curl -O -s -H 'Cache-Control: no-cache' "https://raw.githubusercontent.com/andrewmarklloyd/pi-plex/master/docker-compose.yml"
 	curl -O -s -H 'Cache-Control: no-cache' "https://raw.githubusercontent.com/andrewmarklloyd/pi-plex/master/traefik/traefik.toml"
 	curl -O -s -H 'Cache-Control: no-cache' "https://raw.githubusercontent.com/andrewmarklloyd/pi-plex/master/traefik/rules.toml"
+	mkdir -p /mnt/hdd/docker/traefik/acme
 	mv traefik.toml /mnt/hdd/docker/traefik/
 	mv rules.toml /mnt/hdd/docker/traefik/
 	touch /mnt/hdd/docker/traefik/acme/acme.json
